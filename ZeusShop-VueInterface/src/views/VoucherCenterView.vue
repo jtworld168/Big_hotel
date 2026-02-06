@@ -87,7 +87,7 @@ onMounted(() => {
 <style scoped>
 .voucher-center-view {
   min-height: 100vh;
-  background: var(--background-light);
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
 }
 
 .voucher-header {
@@ -96,26 +96,33 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .back-button {
   padding: 8px 16px;
   border: none;
-  background: var(--background-light);
-  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background: var(--border-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(253, 203, 110, 0.4);
 }
 
 .page-title {
   font-size: 20px;
   font-weight: 600;
+  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .voucher-content {
@@ -128,7 +135,8 @@ onMounted(() => {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
-  color: var(--text-primary);
+  color: #2d3436;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .vouchers-list {
@@ -139,14 +147,20 @@ onMounted(() => {
 
 .voucher-card {
   background: white;
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.voucher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
 .voucher-card::before {
@@ -155,45 +169,59 @@ onMounted(() => {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  width: 6px;
+  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+}
+
+.voucher-card.available::before {
+  background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
 }
 
 .voucher-card.owned::before {
-  background: var(--text-secondary);
+  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
 }
 
 .voucher-card.owned {
-  opacity: 0.7;
+  opacity: 0.8;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
 }
 
 .used-badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  padding: 4px 12px;
-  background: var(--text-secondary);
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #b2bec3 0%, #636e72 100%);
   color: white;
   font-size: 12px;
-  border-radius: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .voucher-amount {
   display: flex;
   align-items: baseline;
   gap: 4px;
+  min-width: 100px;
 }
 
 .amount-symbol {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--danger-color);
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .amount-value {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
-  color: var(--danger-color);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .voucher-info {
@@ -204,36 +232,91 @@ onMounted(() => {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--text-primary);
+  color: #2d3436;
 }
 
 .voucher-condition {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: #636e72;
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voucher-condition::before {
+  content: '📍';
+  font-size: 12px;
 }
 
 .voucher-validity,
 .voucher-status,
 .voucher-claim-time {
   font-size: 13px;
-  color: var(--text-secondary);
+  color: #95a5a6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voucher-validity::before {
+  content: '⏰';
+  font-size: 12px;
+}
+
+.voucher-status::before {
+  content: '💳';
+  font-size: 12px;
+}
+
+.voucher-claim-time::before {
+  content: '📅';
+  font-size: 12px;
 }
 
 .claim-button {
-  padding: 10px 24px;
+  padding: 12px 28px;
   border: none;
-  border-radius: 20px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
   color: white;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
 }
 
 .claim-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 184, 148, 0.4);
+}
+
+.claim-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .voucher-content {
+    padding: 12px;
+  }
+  
+  .voucher-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .amount-value {
+    font-size: 28px;
+  }
+  
+  .voucher-amount {
+    min-width: 80px;
+  }
+  
+  .claim-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
 }
 </style>
