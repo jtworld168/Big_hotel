@@ -51,4 +51,10 @@ public class ShopperAccountEndpoint {
         StpUtil.logout();
         return UnifiedApiResponse.success("已退出");
     }
+    
+    @Operation(summary = "获取所有用户列表（管理员）")
+    @GetMapping("/admin/list-all")
+    public UnifiedApiResponse<java.util.List<ShopperProfileRecord>> listAllShoppers() {
+        return orchestrator.listAllShoppers();
+    }
 }

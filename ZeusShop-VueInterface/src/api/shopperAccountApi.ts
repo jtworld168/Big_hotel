@@ -7,6 +7,7 @@ export interface ShopperProfile {
   portraitImageLink: string
   contactPhoneNumber: string
   employeeStatusFlag: number
+  userRole: number
 }
 
 export interface LoginCredentials {
@@ -40,6 +41,10 @@ class ShopperAccountApi {
   
   async performSignOut(): Promise<string> {
     return httpManager.performPostRequest('/gateway/shopper-accounts/sign-out')
+  }
+  
+  async listAllShoppers(): Promise<ShopperProfile[]> {
+    return httpManager.performGetRequest('/gateway/shopper-accounts/admin/list-all')
   }
 }
 

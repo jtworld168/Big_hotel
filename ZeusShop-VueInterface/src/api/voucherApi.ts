@@ -7,6 +7,8 @@ export interface DiscountVoucher {
   voucherType: number
   discountAmount: number
   minimumPurchase: number
+  totalIssueQuantity: number
+  claimedQuantity: number
   validFromTime: string
   validUntilTime: string
 }
@@ -23,6 +25,10 @@ class VoucherDistributionApi {
     return httpManager.performGetRequest('/gateway/vouchers/available-list')
   }
   
+  async listAvailable() {
+    return httpManager.performGetRequest('/gateway/vouchers/available-list')
+  }
+  
   async claimVoucher(voucherId: number): Promise<string> {
     return httpManager.performPostRequest(`/gateway/vouchers/claim/${voucherId}`)
   }
@@ -30,6 +36,11 @@ class VoucherDistributionApi {
   async fetchMyVouchers(): Promise<VoucherClaim[]> {
     return httpManager.performGetRequest('/gateway/vouchers/my-collection')
   }
+  
+  async distributeToUser(voucherId: number, targetUserId: number): Promise<any> {
+    return httpManager.performPostRequest(`/gateway/vouchers/admin/distribute/${voucherId}/to/${targetUserId}`)
+  }
 }
 
 export const voucherDistributionApi = new VoucherDistributionApi()
+export const voucherApi = voucherDistributionApi

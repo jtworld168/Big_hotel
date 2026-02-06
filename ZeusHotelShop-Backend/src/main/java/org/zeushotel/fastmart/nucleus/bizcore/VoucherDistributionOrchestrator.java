@@ -95,4 +95,42 @@ public class VoucherDistributionOrchestrator {
         
         return UnifiedApiResponse.success("创建成功");
     }
+    
+    @Transactional
+    public UnifiedApiResponse<String> distributeVoucherToUser(Long voucherId, Long targetShopperId, Long adminShopperId) {
+        // Verify voucher exists
+        DiscountVoucherRecord voucher = discountVoucherGateway.selectById(voucherId);
+        if (voucher == null) {
+            return UnifiedApiResponse.fail("优惠券不存在");
+        }
+        
+        if (voucher.getActiveStatus() != 1) {
+            return UnifiedApiResponse.fail("优惠券已失效");
+        }
+        
+        // Check if user already has this voucher
+        LambdaQueryWrapper<ShopperVoucherClaim> claimQuery = new LambdaQueryWrapper<>();
+        claimQuery.eq(ShopperVoucherClaim::getShopperProfileId, targetShopperId);
+        claimQuery.eq(ShopperVoucherClaim::getVoucherId, voucherId);
+        
+        if (shopperVoucherClaimGateway.selectCount(claimQuery) > 0) {
+            return UnifiedApiResponse.fail("该用户已拥有此优惠券");
+        }
+        
+        // Admin distribution: create claim record
+        ShopperVoucherClaim claim = new ShopperVoucherClaim();
+        claim.setShopperProfileId(targetShopperId);
+        claim.setVoucherId(voucherId);
+        claim.setUsageStatus(0);
+        claim.setClaimedAtTime(LocalDateTime.now());
+        claim.setDeletionMarker(0);
+        
+        shopperVoucherClaimGateway.insert(claim);
+        
+        // Always update claimed quantity for admin distributions to track all distributions
+        voucher.setClaimedQuantity(voucher.getClaimedQuantity() + 1);
+        discountVoucherGateway.updateById(voucher);
+        
+        return UnifiedApiResponse.success("发放成功");
+    }
 }

@@ -10,6 +10,7 @@ CREATE TABLE tbl_shopper_profiles (
     portrait_image_link VARCHAR(500) COMMENT '头像图片链接',
     contact_phone_number VARCHAR(20) COMMENT '联系电话号码',
     employee_status_flag TINYINT DEFAULT 0 COMMENT '员工状态标志 0-非员工 1-员工',
+    user_role TINYINT DEFAULT 0 COMMENT '用户角色 0-普通用户 1-员工 2-管理员',
     account_active_flag TINYINT DEFAULT 1 COMMENT '账户激活标志 0-禁用 1-启用',
     record_created_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
     record_updated_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录更新时间',
@@ -91,8 +92,8 @@ CREATE TABLE tbl_purchase_orders (
     INDEX idx_order_status (order_status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='采购订单表';
 
-INSERT INTO tbl_shopper_profiles (login_username, secret_hash, display_nickname, employee_status_flag) 
-VALUES ('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '系统管理员', 1);
+INSERT INTO tbl_shopper_profiles (login_username, secret_hash, display_nickname, employee_status_flag, user_role) 
+VALUES ('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '系统管理员', 1, 2);
 
 INSERT INTO tbl_merchandise_catalog (item_sku, item_display_name, item_description, category_label, standard_price_yuan, staff_discount_price_yuan, stock_quantity) VALUES
 ('SKU001', '可口可乐 330ml', '经典可乐饮料', '饮料', 3.50, 2.80, 100),
@@ -100,3 +101,9 @@ INSERT INTO tbl_merchandise_catalog (item_sku, item_display_name, item_descripti
 ('SKU003', '奥利奥饼干', '巧克力夹心饼干', '零食', 8.50, 6.80, 60),
 ('SKU004', '农夫山泉 550ml', '天然矿泉水', '饮料', 2.00, 1.50, 150),
 ('SKU005', '德芙巧克力', '丝滑牛奶巧克力', '零食', 12.00, 9.60, 50);
+
+-- Insert a welcome voucher with high quantity for new users
+INSERT INTO tbl_discount_vouchers 
+(voucher_code, voucher_title, voucher_type, discount_amount, minimum_purchase, total_issue_quantity, claimed_quantity, valid_from_time, valid_until_time, active_status) 
+VALUES 
+('WELCOME2024', '新用户欢迎券', 1, 5.00, 10.00, 999999, 0, '2024-01-01 00:00:00', '2099-12-31 23:59:59', 1);
