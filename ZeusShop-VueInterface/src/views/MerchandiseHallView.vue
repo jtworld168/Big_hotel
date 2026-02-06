@@ -2,8 +2,12 @@
   <div class="merchandise-hall-view">
     <header class="hall-header">
       <div class="header-content">
-        <h1 class="hall-title">🏪 商品大厅</h1>
+        <h1 class="hall-title">🏪 {{ t('product.catalog') }}</h1>
         <div class="header-actions">
+          <LanguageSwitcher />
+          <button class="icon-button" @click="navigateToAdmin" v-if="isAdmin" title="Admin Panel">
+            ⚙️
+          </button>
           <button class="icon-button" @click="navigateToBasket">
             🛒
             <span v-if="basketStore.totalItemCount > 0" class="badge">{{ basketStore.totalItemCount }}</span>
@@ -41,25 +45,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { merchandiseCatalogApi, MerchandiseDisplay } from '@/api/merchandiseApi'
 import { useBasketStore } from '@/stores/basketStore'
+import { useShopperStore } from '@/stores/shopperStore'
 import ProductCard from '@/components/ProductCard.vue'
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 const router = useRouter()
+const { t } = useI18n()
 const basketStore = useBasketStore()
+const shopperStore = useShopperStore()
 
 const productList = ref<MerchandiseDisplay[]>([])
 const selectedCategory = ref<string | null>(null)
 const isLoading = ref(false)
 
-const categories = [
-  { label: '全部', value: null },
-  { label: '饮料', value: '饮料' },
-  { label: '零食', value: '零食' },
-  { label: '方便食品', value: '方便食品' }
-]
+const isAdmin = computed(() => shopperStore.currentUser?.userRole === 2)
+
+const categories = computed(() => [
+  { label: t('product.all'), value: null },
+  { label: t('product.beverage'), value: '饮料' },
+  { label: t('product.snack'), value: '零食' },
+  { label: t('product.instant'), value: '方便食品' }
+])
 
 async function loadProducts() {
   isLoading.value = true
@@ -86,6 +97,10 @@ function navigateToBasket() {
 
 function navigateToProfile() {
   router.push('/shopper-profile')
+}
+
+function navigateToAdmin() {
+  router.push('/admin-panel')
 }
 
 onMounted(() => {

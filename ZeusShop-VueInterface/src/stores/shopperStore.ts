@@ -19,6 +19,8 @@ export const useShopperStore = defineStore('shopper-session', () => {
     return currentProfile.value?.portraitImageLink || '/default-avatar.png'
   })
   
+  const currentUser = computed(() => currentProfile.value)
+  
   async function performLoginAction(username: string, password: string) {
     try {
       const token = await shopperAccountApi.performLogin({
@@ -93,6 +95,7 @@ export const useShopperStore = defineStore('shopper-session', () => {
   
   return {
     currentProfile,
+    currentUser,
     sessionActive,
     isEmployeeAccount,
     displayName,

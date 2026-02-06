@@ -113,7 +113,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
-import { shopperAccountApi } from '@/api/shopperApi'
+import { shopperAccountApi } from '@/api/shopperAccountApi'
 import { voucherApi } from '@/api/voucherApi'
 
 const router = useRouter()
