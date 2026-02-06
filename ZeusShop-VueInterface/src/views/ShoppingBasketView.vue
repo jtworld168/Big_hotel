@@ -359,30 +359,3 @@ onMounted(() => {
   }
 }
 </style>
-  padding: 20px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.total-section {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.total-label {
-  font-size: 16px;
-  color: var(--text-secondary);
-}
-
-.total-amount {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--danger-color);
-}
-</style>

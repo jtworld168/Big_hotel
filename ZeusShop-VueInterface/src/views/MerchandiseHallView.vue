@@ -8,6 +8,9 @@
           <button class="icon-button" @click="navigateToAdmin" v-if="isAdmin" title="Admin Panel">
             ⚙️
           </button>
+          <button class="icon-button voucher-button" @click="navigateToVouchers" title="优惠券中心">
+            🎫
+          </button>
           <button class="icon-button" @click="navigateToBasket">
             🛒
             <span v-if="basketStore.totalItemCount > 0" class="badge">{{ basketStore.totalItemCount }}</span>
@@ -100,6 +103,10 @@ function navigateToBasket() {
   router.push('/shopping-basket')
 }
 
+function navigateToVouchers() {
+  router.push('/voucher-center')
+}
+
 function navigateToProfile() {
   router.push('/shopper-profile')
 }
@@ -154,15 +161,38 @@ onMounted(() => {
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: var(--background-light);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .icon-button:hover {
-  background: var(--border-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.icon-button.voucher-button {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.icon-button.voucher-button:hover {
+  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(253, 203, 110, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(253, 203, 110, 0.5);
+  }
 }
 
 .badge {
