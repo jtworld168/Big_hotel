@@ -120,9 +120,9 @@ onMounted(() => {
   font-size: 20px;
   font-weight: 600;
   background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .voucher-content {
@@ -210,18 +210,18 @@ onMounted(() => {
   font-size: 24px;
   font-weight: 700;
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .amount-value {
   font-size: 36px;
   font-weight: 700;
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .voucher-info {

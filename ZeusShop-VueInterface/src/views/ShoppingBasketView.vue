@@ -148,9 +148,9 @@ onMounted(() => {
   font-size: 20px;
   font-weight: 600;
   background: linear-gradient(135deg, #00acc1 0%, #0097a7 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .basket-content {
@@ -206,9 +206,9 @@ onMounted(() => {
   font-size: 18px;
   font-weight: 700;
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .quantity-controls {
@@ -321,9 +321,9 @@ onMounted(() => {
   font-size: 28px;
   font-weight: 700;
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 @media (max-width: 768px) {
