@@ -115,6 +115,7 @@
     "voucherManagement": "Voucher Management",
     "distributeToUser": "Distribute to User",
     "selectUser": "Select User",
+    "selectVoucherFirst": "Please select a voucher first",
     "distribute": "Distribute",
     "distributeSuccess": "Distributed successfully"
   },

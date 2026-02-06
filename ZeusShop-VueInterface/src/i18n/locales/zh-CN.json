@@ -115,6 +115,7 @@
     "voucherManagement": "优惠券管理",
     "distributeToUser": "分发给用户",
     "selectUser": "选择用户",
+    "selectVoucherFirst": "请先选择要分发的优惠券",
     "distribute": "分发",
     "distributeSuccess": "分发成功"
   },

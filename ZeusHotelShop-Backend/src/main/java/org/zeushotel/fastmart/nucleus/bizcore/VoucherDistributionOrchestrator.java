@@ -117,7 +117,7 @@ public class VoucherDistributionOrchestrator {
             return UnifiedApiResponse.fail("该用户已拥有此优惠券");
         }
         
-        // Admin distribution bypasses quantity limits
+        // Admin distribution: create claim record
         ShopperVoucherClaim claim = new ShopperVoucherClaim();
         claim.setShopperProfileId(targetShopperId);
         claim.setVoucherId(voucherId);
@@ -127,11 +127,9 @@ public class VoucherDistributionOrchestrator {
         
         shopperVoucherClaimGateway.insert(claim);
         
-        // Update claimed quantity if within limits
-        if (voucher.getClaimedQuantity() < voucher.getTotalIssueQuantity()) {
-            voucher.setClaimedQuantity(voucher.getClaimedQuantity() + 1);
-            discountVoucherGateway.updateById(voucher);
-        }
+        // Always update claimed quantity for admin distributions to track all distributions
+        voucher.setClaimedQuantity(voucher.getClaimedQuantity() + 1);
+        discountVoucherGateway.updateById(voucher);
         
         return UnifiedApiResponse.success("发放成功");
     }

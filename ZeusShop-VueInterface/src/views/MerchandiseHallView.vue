@@ -67,7 +67,7 @@ const isAdmin = computed(() => shopperStore.currentUser?.userRole === 2)
 
 const categories = computed(() => [
   { label: t('product.all'), value: null },
-  { label: t('product.beverage'), value: '饮料' },
+  { label: t('product.beverage'), value: '饮料' },  // Backend expects Chinese category names
   { label: t('product.snack'), value: '零食' },
   { label: t('product.instant'), value: '方便食品' }
 ])

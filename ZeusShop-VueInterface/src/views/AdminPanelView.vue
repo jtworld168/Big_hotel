@@ -53,7 +53,7 @@
         <section class="admin-section">
           <h2 class="section-title">🎫 {{ t('admin.voucherManagement') }}</h2>
           <div class="voucher-select-area">
-            <label class="select-label">{{ t('admin.selectUser') }}:</label>
+            <label class="select-label">{{ t('voucher.availableVouchers') }}:</label>
             <select 
               v-model="selectedVoucher" 
               class="voucher-select"
@@ -184,7 +184,7 @@ const loadVouchers = async () => {
 
 const openDistributeDialog = (user: User) => {
   if (!selectedVoucher.value) {
-    alert('请先选择要分发的优惠券')
+    alert(t('admin.selectVoucherFirst'))
     return
   }
   selectedUser.value = user

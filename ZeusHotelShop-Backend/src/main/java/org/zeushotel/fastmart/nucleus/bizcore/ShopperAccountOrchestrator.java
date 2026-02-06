@@ -107,9 +107,22 @@ public class ShopperAccountOrchestrator {
         
         java.util.List<ShopperProfileRecord> shoppers = shopperProfileGateway.selectList(queryWrapper);
         
-        // Remove sensitive information
-        shoppers.forEach(shopper -> shopper.setSecretHash(null));
-        
-        return UnifiedApiResponse.success(shoppers);
+        // Create a new list with cloned objects to avoid modifying cached entities
+        return UnifiedApiResponse.success(
+            shoppers.stream().map(shopper -> {
+                ShopperProfileRecord safeProfile = new ShopperProfileRecord();
+                safeProfile.setProfileIdentifier(shopper.getProfileIdentifier());
+                safeProfile.setLoginUsername(shopper.getLoginUsername());
+                safeProfile.setDisplayNickname(shopper.getDisplayNickname());
+                safeProfile.setPortraitImageLink(shopper.getPortraitImageLink());
+                safeProfile.setContactPhoneNumber(shopper.getContactPhoneNumber());
+                safeProfile.setEmployeeStatusFlag(shopper.getEmployeeStatusFlag());
+                safeProfile.setUserRole(shopper.getUserRole());
+                safeProfile.setAccountActiveFlag(shopper.getAccountActiveFlag());
+                safeProfile.setRecordCreatedTime(shopper.getRecordCreatedTime());
+                // secretHash intentionally omitted for security
+                return safeProfile;
+            }).collect(java.util.stream.Collectors.toList())
+        );
     }
 }
