@@ -101,3 +101,9 @@ INSERT INTO tbl_merchandise_catalog (item_sku, item_display_name, item_descripti
 ('SKU003', '奥利奥饼干', '巧克力夹心饼干', '零食', 8.50, 6.80, 60),
 ('SKU004', '农夫山泉 550ml', '天然矿泉水', '饮料', 2.00, 1.50, 150),
 ('SKU005', '德芙巧克力', '丝滑牛奶巧克力', '零食', 12.00, 9.60, 50);
+
+-- Insert a welcome voucher with high quantity for new users
+INSERT INTO tbl_discount_vouchers 
+(voucher_code, voucher_title, voucher_type, discount_amount, minimum_purchase, total_issue_quantity, claimed_quantity, valid_from_time, valid_until_time, active_status) 
+VALUES 
+('WELCOME2024', '新用户欢迎券', 1, 5.00, 10.00, 999999, 0, '2024-01-01 00:00:00', '2099-12-31 23:59:59', 1);

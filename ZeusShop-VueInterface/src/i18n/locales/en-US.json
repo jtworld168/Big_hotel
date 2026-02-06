@@ -12,7 +12,8 @@
     "success": "Success",
     "failed": "Failed",
     "total": "Total",
-    "back": "Back"
+    "back": "Back",
+    "units": "units"
   },
   "nav": {
     "home": "Home",
@@ -59,7 +60,10 @@
     "instant": "Instant Food",
     "addToCart": "Add to Cart",
     "outOfStock": "Out of Stock",
-    "lowStock": "Low Stock"
+    "lowStock": "Low Stock",
+    "description": "Product Description",
+    "noDescription": "No description available",
+    "notFound": "Product not found"
   },
   "cart": {
     "title": "Shopping Cart",

@@ -35,6 +35,7 @@
         :key="product.itemIdentifier"
         :product="product"
         @add-to-cart="handleAddToCart"
+        @view-details="handleViewDetails"
       />
     </div>
     
@@ -89,6 +90,10 @@ function selectCategory(category: string | null) {
 
 async function handleAddToCart(product: MerchandiseDisplay) {
   await basketStore.addMerchandiseToBasket(product.itemIdentifier, 1)
+}
+
+function handleViewDetails(product: MerchandiseDisplay) {
+  router.push(`/product/${product.itemIdentifier}`)
 }
 
 function navigateToBasket() {

@@ -57,6 +57,11 @@ const routeDefinitions: RouteRecordRaw[] = [
     name: 'AdminPanel',
     component: () => import('@/views/AdminPanelView.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/product/:id',
+    name: 'ProductDetails',
+    component: () => import('@/views/ProductDetailsView.vue')
   }
 ]
 

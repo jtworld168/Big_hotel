@@ -12,7 +12,8 @@
     "success": "成功",
     "failed": "失败",
     "total": "共计",
-    "back": "返回"
+    "back": "返回",
+    "units": "件"
   },
   "nav": {
     "home": "首页",
@@ -59,7 +60,10 @@
     "instant": "方便食品",
     "addToCart": "加入购物篮",
     "outOfStock": "缺货",
-    "lowStock": "库存不足"
+    "lowStock": "库存不足",
+    "description": "商品描述",
+    "noDescription": "暂无描述",
+    "notFound": "商品不存在"
   },
   "cart": {
     "title": "购物篮",
