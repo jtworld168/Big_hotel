@@ -1,0 +1,129 @@
+{
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "loading": "Loading...",
+    "noData": "No data",
+    "success": "Success",
+    "failed": "Failed",
+    "total": "Total",
+    "back": "Back"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "orders": "My Orders",
+    "vouchers": "My Vouchers",
+    "profile": "Profile",
+    "admin": "Admin Panel"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "nickname": "Nickname",
+    "phone": "Phone",
+    "loginBtn": "Login Now",
+    "registerBtn": "Register Now",
+    "loginSuccess": "Login successful",
+    "registerSuccess": "Registration successful"
+  },
+  "user": {
+    "role": {
+      "ordinary": "Ordinary User",
+      "employee": "Employee",
+      "admin": "Administrator"
+    },
+    "profile": "Profile",
+    "avatar": "Avatar",
+    "updateProfile": "Update Profile"
+  },
+  "product": {
+    "catalog": "Product Catalog",
+    "name": "Product Name",
+    "price": "Price",
+    "employeePrice": "Employee Price",
+    "stock": "Stock",
+    "category": "Category",
+    "all": "All",
+    "beverage": "Beverage",
+    "snack": "Snack",
+    "instant": "Instant Food",
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Low Stock"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Cart is empty",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Checkout",
+    "clearCart": "Clear Cart",
+    "removeItem": "Remove",
+    "itemAdded": "Added to cart"
+  },
+  "order": {
+    "title": "My Orders",
+    "orderNumber": "Order Number",
+    "createTime": "Created At",
+    "totalAmount": "Total Amount",
+    "discount": "Discount",
+    "finalAmount": "Final Amount",
+    "status": "Status",
+    "statusPending": "Pending Payment",
+    "statusPaid": "Paid",
+    "statusCompleted": "Completed",
+    "paymentMethod": "Payment Method",
+    "wechat": "WeChat Pay",
+    "alipay": "Alipay",
+    "createOrder": "Create Order",
+    "orderDetails": "Order Details",
+    "noOrders": "No orders"
+  },
+  "voucher": {
+    "title": "Vouchers",
+    "myVouchers": "My Vouchers",
+    "availableVouchers": "Available Vouchers",
+    "code": "Voucher Code",
+    "type": "Type",
+    "typeFixed": "Fixed Amount",
+    "typeDiscount": "Discount",
+    "amount": "Amount",
+    "minPurchase": "Min Purchase",
+    "validPeriod": "Valid Period",
+    "claim": "Claim",
+    "claimed": "Claimed",
+    "used": "Used",
+    "unused": "Unused",
+    "claimSuccess": "Claimed successfully",
+    "createVoucher": "Create Voucher",
+    "distributeVoucher": "Distribute Voucher"
+  },
+  "admin": {
+    "panel": "Admin Panel",
+    "userManagement": "User Management",
+    "voucherManagement": "Voucher Management",
+    "distributeToUser": "Distribute to User",
+    "selectUser": "Select User",
+    "distribute": "Distribute",
+    "distributeSuccess": "Distributed successfully"
+  },
+  "payment": {
+    "title": "Payment",
+    "selectMethod": "Select Payment Method",
+    "scanQRCode": "Scan QR Code",
+    "qrCodeExpired": "QR Code Expired",
+    "paymentSuccess": "Payment successful",
+    "paymentFailed": "Payment failed"
+  }
+}

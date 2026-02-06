@@ -31,6 +31,7 @@ public class ShopperAccountOrchestrator {
         profile.setDisplayNickname(request.getNickname());
         profile.setContactPhoneNumber(request.getPhoneNumber());
         profile.setEmployeeStatusFlag(0);
+        profile.setUserRole(0); // Default to ordinary user
         profile.setAccountActiveFlag(1);
         profile.setDeletionMarker(0);
         
@@ -97,5 +98,18 @@ public class ShopperAccountOrchestrator {
         shopperProfileGateway.updateById(profile);
         
         return UnifiedApiResponse.success("更新成功");
+    }
+    
+    public UnifiedApiResponse<java.util.List<ShopperProfileRecord>> listAllShoppers() {
+        LambdaQueryWrapper<ShopperProfileRecord> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ShopperProfileRecord::getAccountActiveFlag, 1);
+        queryWrapper.orderByDesc(ShopperProfileRecord::getRecordCreatedTime);
+        
+        java.util.List<ShopperProfileRecord> shoppers = shopperProfileGateway.selectList(queryWrapper);
+        
+        // Remove sensitive information
+        shoppers.forEach(shopper -> shopper.setSecretHash(null));
+        
+        return UnifiedApiResponse.success(shoppers);
     }
 }

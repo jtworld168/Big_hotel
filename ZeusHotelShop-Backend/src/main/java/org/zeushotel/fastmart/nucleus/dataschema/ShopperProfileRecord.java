@@ -23,6 +23,8 @@ public class ShopperProfileRecord {
     
     private Integer employeeStatusFlag;
     
+    private Integer userRole;
+    
     private Integer accountActiveFlag;
     
     @TableField(fill = FieldFill.INSERT)

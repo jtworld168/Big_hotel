@@ -51,6 +51,12 @@ const routeDefinitions: RouteRecordRaw[] = [
     name: 'QrScanner',
     component: () => import('@/views/QrScannerView.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin-panel',
+    name: 'AdminPanel',
+    component: () => import('@/views/AdminPanelView.vue'),
+    meta: { requiresAuth: true }
   }
 ]
 

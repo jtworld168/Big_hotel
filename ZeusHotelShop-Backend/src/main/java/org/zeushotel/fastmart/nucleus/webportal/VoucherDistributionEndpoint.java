@@ -45,4 +45,13 @@ public class VoucherDistributionEndpoint {
     public UnifiedApiResponse<String> createNewVoucher(@RequestBody DiscountVoucherRecord voucher) {
         return orchestrator.createVoucher(voucher);
     }
+    
+    @Operation(summary = "分发优惠券给指定用户（管理员）")
+    @PostMapping("/admin/distribute/{voucherId}/to/{targetUserId}")
+    public UnifiedApiResponse<String> distributeToUser(
+            @PathVariable Long voucherId, 
+            @PathVariable Long targetUserId) {
+        Long adminId = StpUtil.getLoginIdAsLong();
+        return orchestrator.distributeVoucherToUser(voucherId, targetUserId, adminId);
+    }
 }
