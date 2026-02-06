@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: zeus-hotel-fastmart-nexus
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zeus_hotel_shop?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123456
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  mapper-locations: classpath*:/sqlmaps/**/*.xml
+  type-aliases-package: org.zeushotel.fastmart.nucleus.dataschema
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deletionMarker
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+sa-token:
+  token-name: zeus-auth-token
+  timeout: 2592000
+  activity-timeout: -1
+  is-concurrent: true
+  is-share: false
+  token-style: uuid
+  is-log: false
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+server:
+  port: 9876
+  servlet:
+    context-path: /zeus-api
